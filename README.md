@@ -1,3 +1,3 @@
-# risk
+# RISK
 
-A description of this package.
+Risk Stands for RestApi In Swift Kit, is a kit to build restful api using swift.
