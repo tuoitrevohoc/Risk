@@ -11,8 +11,8 @@ let package = Package(
             name: "Risk",
             targets: ["Risk"]),
         .library(
-            name: "Tcp",
-            targets: ["Tcp"]
+            name: "Sockit",
+            targets: ["Sockit"]
         ),
     ],
     dependencies: [
@@ -24,16 +24,16 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "Risk",
-            dependencies: ["Tcp"]),
+            dependencies: ["Sockit"]),
         .target(
-            name: "Tcp",
+            name: "Sockit",
             dependencies: ["LibC"]),
         .target(name: "LibC"),
         .testTarget(
             name: "RiskTests",
             dependencies: ["Risk"]),
         .testTarget(
-            name: "TcpTests",
-            dependencies: ["Tcp"]),
+            name: "SockitTests",
+            dependencies: ["Sockit"]),
     ]
 )

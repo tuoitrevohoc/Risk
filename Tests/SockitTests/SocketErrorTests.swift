@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import Tcp
+import Sockit
 
 class SocketErrorTests: XCTestCase {
 
