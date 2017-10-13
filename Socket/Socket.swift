@@ -4,10 +4,10 @@ import LibC
 public class Socket {
     
     /// the socket descriptor
-    private var descriptor: Int32
+    private(set) var descriptor: Int32
     
     /// if the socket is non blocking socket or not
-    public var isNonBlocking: Bool
+    private(set) var isNonBlocking: Bool
     
     /// check if the socket is currently connected
     public var isConnected : Bool {
@@ -22,7 +22,7 @@ public class Socket {
     /// - Parameters:
     ///   - descriptor: socket descriptor
     ///   - isNonBlocking: is blocking or not
-    public init(descriptor: Int32, isNonBlocking: Bool) {
+    public init(descriptor: Int32, isNonBlocking: Bool = true) {
         self.descriptor = descriptor
         self.isNonBlocking = isNonBlocking
     }
@@ -31,7 +31,7 @@ public class Socket {
     /// Create a socket with is non blocking option
     ///
     /// - Parameter isNonBlocking: is non blocking or not
-    public convenience init(isNonBlocking: Bool) throws {
+    public init(isNonBlocking: Bool) throws {
         let descriptor = socket(AF_INET, SOCK_STREAM, 0)
         
         guard descriptor > 0 else {
@@ -44,7 +44,8 @@ public class Socket {
             }
         }
         
-        self.init(descriptor: descriptor, isNonBlocking: isNonBlocking)
+        self.descriptor = descriptor
+        self.isNonBlocking = isNonBlocking
     }
     
     /// Close current socket

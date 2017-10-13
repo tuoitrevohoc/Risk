@@ -16,4 +16,15 @@ public enum SocketError: Error {
     // error on set non blocking
     case setNonBlockingFailed(code: Int32)
     
+    // error when setting socket option failed
+    case setSocketOptionFailed(code: Int32)
+    
+    // get address failed
+    case getAddressFailed(code: Int32)
+    
+    // bind to address failed
+    case bindFailed(code: Int32)
+    
+    // listen failed with code
+    case listenFailed(code: Int32)
 }
